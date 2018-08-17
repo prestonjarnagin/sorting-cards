@@ -6,7 +6,7 @@ class CardTest < MiniTest::Test
 
   def test_it_exists
     card = Card.new("10", "Hearts")
-    assert_instance_of Card, card
+    assert_instance_of Card , card
   end
 
   def test_it_has_a_value

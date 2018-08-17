@@ -7,6 +7,4 @@ class Guess
     @card = card
   end
 
-a
-
 end

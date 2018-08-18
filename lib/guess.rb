@@ -2,17 +2,18 @@ require './lib/card'
 class Guess
 
   attr_reader :guess,
-              :card
+              :card,
+              :response
 
   def initialize(guess, card)
     @guess = guess
     @card = card
     @suit = ""
     @value = ""
-    @correct
+    @response = make_response
   end
 
-  def response
+  def make_response
     "#{card.value} of #{card.suit}"
   end
 

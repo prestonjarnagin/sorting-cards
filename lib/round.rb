@@ -1,33 +1,34 @@
 require './lib/guess'
+require './lib/deck'
+require 'pry'
 class Round
 
   attr_reader :deck,
               :guesses,
-              :current_card
+              :current_card,
+              :number_correct
 
   def initialize(deck)
     @deck = deck
+    @current_card = deck.cards[0]
     @guesses = []
     @current_card_index = 0
-    @current_card = deck[0]
     @number_correct = 0
-  end
-
-  def record_guess(guessed_card)
-    new_guess = Guess.new(guessed_card, @current_card)
-    @guesses << new_guess
-    if new_guess.correct?
-      @number_correct += 1
-    end
-    @current_card_index += 1
-    if @deck[@current_card_index] = nil
-      @current_card_index = 0
-    end
 
   end
 
-  def percent_correct
-    (@number_correct / @guesses.length) * 100
+  def record_guess(card)
+    val = card[:value]
+
+    
+
   end
 
 end
+
+
+# card_1 = Card.new("3","Hearts")
+# card_2 = Card.new("4", "Clubs")
+deck = Deck.new([{value: "Jack", suit: "Diamonds"}])
+round = Round.new(deck)
+round.record_guess({value: "Jack", suit: "Diamonds"})

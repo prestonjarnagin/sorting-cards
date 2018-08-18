@@ -1,7 +1,9 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/guess'
-require './lib/deck'
+# require './lib/guess'
+# require './lib/deck'
+require './lib/round'
+require 'pry'
 
 class RoundTest < MiniTest::Test
 
@@ -34,11 +36,18 @@ class RoundTest < MiniTest::Test
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
-    round.record_guess({value: "3", suit: "Hearts"})
-    assert_equal card_1 , round.guesses
+
+    #After making a guess, is the first
+    #guess in the guess array the same
+    #the actual guess
+
+    round.record_guess(card_1)
+    assert_equal guess , round.guesses[1]
+
   end
 
   def test_can_count_guesses
+    skip
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
@@ -48,6 +57,7 @@ class RoundTest < MiniTest::Test
   end
 
   def test_counts_correct
+    skip
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
@@ -57,6 +67,7 @@ class RoundTest < MiniTest::Test
   end
 
   def test_calculates_percent_correct
+    skip
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])

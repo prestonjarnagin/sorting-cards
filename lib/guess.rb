@@ -8,17 +8,18 @@ class Guess
   def initialize(guess, card)
     @guess = guess
     @card = card
-    @suit = ""
-    @value = ""
+    @suit = card.suit
+    @value = card.value
     @response = make_response
   end
+
 
   def make_response
     "#{card.value} of #{card.suit}"
   end
 
   def correct?
-    @guess.split(" of ")[1] == @card.suit && @guess.split(" of ")[0] == @card.value
+    @guess.split(" of ")[1] == @suit && @guess.split(" of ")[0] == @value
   end
 
   def feedback

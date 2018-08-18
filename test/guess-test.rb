@@ -25,7 +25,7 @@ class GuessTest < MiniTest::Test
   def test_handles_incorrect_response
     card = Card.new("10", "Hearts")
     guess = Guess.new("10 of Hearts", card)
-    reftue_equal "9 of Diamonds" , guess.response
+    refute_equal "9 of Diamonds" , guess.response
   end
 
   def test_guesses_correctly
@@ -35,7 +35,7 @@ class GuessTest < MiniTest::Test
   end
 
   def test_handels_incorrect_guess
-    card = Card.new("10", "Hearts")
+    card = Card.new("9", "Hearts")
     guess = Guess.new("10 of Hearts", card)
     refute guess.correct?
   end

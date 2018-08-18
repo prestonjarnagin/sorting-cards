@@ -9,6 +9,7 @@ class Guess
     @card = card
     @suit = ""
     @value = ""
+    @correct
   end
 
   def response
@@ -22,8 +23,9 @@ class Guess
   def feedback
     if correct?
       "Correct"
+    else
+      "Incorrect"
     end
-    "Incorrect"
   end
 
 end

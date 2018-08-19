@@ -14,21 +14,24 @@ class Round
     @guesses = []
     @current_card_index = 0
     @number_correct = 0
-
   end
 
   def record_guess(card)
-    val = card[:value]
+    guess = Guess.new("#{card[:value]} of #{card[:suit]}", @current_card)
+    binding.pry
+    @guesses << guess
+    if guess.correct?
+      @number_correct = @number_correct + 1
+    end
+    @current_card_index += 1
+    if @current_card_index == deck.cards.count
+      @current_card_index = 0
+    end
+    guess
+  end
 
-    
-
+  def percent_correct
+    (@number_correct/@guesses.count) * 100.0
   end
 
 end
-
-
-# card_1 = Card.new("3","Hearts")
-# card_2 = Card.new("4", "Clubs")
-deck = Deck.new([{value: "Jack", suit: "Diamonds"}])
-round = Round.new(deck)
-round.record_guess({value: "Jack", suit: "Diamonds"})

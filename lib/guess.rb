@@ -10,12 +10,7 @@ class Guess
     @card = card
     @suit = card.suit
     @value = card.value
-    @response = make_response
-  end
-
-
-  def make_response
-    "#{card.value} of #{card.suit}"
+    @response = guess
   end
 
   def correct?

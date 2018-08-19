@@ -32,10 +32,11 @@ class GuessTest < MiniTest::Test
     card = Card.new("10", "Hearts")
     guess = Guess.new("10 of Hearts", card)
     assert guess.correct?
+
   end
 
   def test_handels_incorrect_guess
-    card = Card.new("9", "Hearts")
+    card = Card.new("9", "Spades")
     guess = Guess.new("10 of Hearts", card)
     refute guess.correct?
   end

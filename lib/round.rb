@@ -20,13 +20,11 @@ class Round
     guess_string = "#{card[:value]} of #{card[:suit]}"
     guess = Guess.new(guess_string, @current_card)
     @guesses << guess
-
     if guess.correct?
       @number_correct += 1
     end
-
     deck.cards.rotate!
-  
+    @current_card = deck.cards[0]
     guess
   end
 

@@ -17,16 +17,14 @@ class Round
   end
 
   def record_guess(card)
-    guess = Guess.new("#{card[:value]} of #{card[:suit]}", @current_card)
+    guess_string = "#{card[:value]} of #{card[:suit]}"
+    guess = Guess.new(guess_string, @current_card)
     @guesses << guess
     if guess.correct?
       @number_correct += 1
     end
-    @current_card_index += 1
-    if @current_card_index == deck.cards.count
-      @current_card_index = 0
-    end
-    @current_card = @deck.cards[@current_card_index]
+    deck.cards.rotate!
+    @current_card = deck.cards[0]
     guess
   end
 

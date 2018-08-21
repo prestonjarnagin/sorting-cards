@@ -26,6 +26,9 @@ class DeckTest < MiniTest::Test
     card_3 = Card.new("5", "Diamonds")
     deck = Deck.new([card_1, card_2, card_3])
     assert_equal 3 , deck.count
+    card_4 = Card.new("5", "Diamonds")
+    deck.cards << card_4
+    assert_equal 4 , deck.count
   end
 
   def test_it_can_sort
@@ -36,6 +39,15 @@ class DeckTest < MiniTest::Test
     card_5 = Card.new("Ace", "Diamonds")
     deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
     assert_equal [card_1, card_3, card_2, card_5, card_4] , deck.sort
+
+    card_1 = Card.new("7","Hearts")
+    card_2 = Card.new("7", "Clubs")
+    card_3 = Card.new("10", "Diamonds")
+    card_4 = Card.new("2", "Spades")
+    card_5 = Card.new("4", "Diamonds")
+    deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
+    assert_equal [card_4, card_5, card_2, card_1, card_3] , deck.sort
+
   end
 
 end

@@ -2,12 +2,10 @@ require './lib/guess'
 require './lib/deck'
 require 'pry'
 class Round
-
   attr_reader :deck,
               :guesses,
               :current_card,
               :number_correct
-
   def initialize(deck)
     @deck = deck
     @current_card = deck.cards[0]

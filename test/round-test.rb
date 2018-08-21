@@ -28,12 +28,12 @@ class RoundTest < MiniTest::Test
     assert_equal card_1 , round.current_card
   end
 
-  def test_can_record_guess
+  def test_can_count_guess
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
     round = Round.new(deck)
-
+    assert_equal 0 , round.guesses.count
     round.record_guess({value: "4", suit: "Hearts"})
     assert_equal 1 , round.guesses.count
     round.record_guess({value: "4", suit: "Hearts"})
@@ -41,7 +41,7 @@ class RoundTest < MiniTest::Test
     assert_equal 3 , round.guesses.count
   end
 
-  def test_counts_correct
+  def test_counts_number_correct
     card_1 = Card.new("3","Hearts")
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([card_1, card_2])
@@ -65,6 +65,8 @@ class RoundTest < MiniTest::Test
     round.record_guess({value: "4", suit: "Clubs"})
     assert_equal "3" , round.guesses[0].card.value
     assert_equal "Hearts" , round.guesses[0].card.suit
+    assert_equal "4" , round.guesses[1].card.value
+    assert_equal "Clubs" , round.guesses[1].card.suit
   end
 
   def test_calculates_percent_correctly

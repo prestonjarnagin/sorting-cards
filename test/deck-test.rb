@@ -50,4 +50,14 @@ class DeckTest < MiniTest::Test
     assert_equal [@card_1] , deck.sort
   end
 
+  def test_can_merge_sort
+    card_1 = Card.new("7","Hearts")
+    card_2 = Card.new("7", "Clubs")
+    card_3 = Card.new("10", "Diamonds")
+    card_4 = Card.new("2", "Spades")
+    card_5 = Card.new("4", "Diamonds")
+    deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
+    assert_equal [card_4, card_5, card_2, card_1, card_3] , deck.merge_sort
+  end
+
 end
